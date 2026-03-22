@@ -43,6 +43,29 @@ export function toHex(color) {
   } catch { return '#000000'; }
 }
 
+export function getDocUrl(path, traceType) {
+  // Convert dot-path to Plotly docs anchor format
+  // e.g. "xaxis.showgrid" → "layout-xaxis-showgrid"
+  //      "marker.size" (scatter) → "scatter-marker-size"
+  const clean = path.replace(/\[\d+\]/g, ''); // strip array indices
+  const anchor = clean.replace(/\./g, '-');
+  if (traceType) {
+    return `https://plotly.com/javascript/reference/${traceType}/#${traceType}-${anchor}`;
+  }
+  return `https://plotly.com/javascript/reference/layout/#layout-${anchor}`;
+}
+
+export function createDocLink(path, traceType) {
+  const a = document.createElement('a');
+  a.className = 'doc-link';
+  a.href = getDocUrl(path, traceType);
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.title = `Plotly docs: ${path}`;
+  a.textContent = '?';
+  return a;
+}
+
 export function coerceValue(el) {
   const type = el.dataset.type || '';
   const val = el.type === 'checkbox' ? el.checked : el.value;

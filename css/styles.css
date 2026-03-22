@@ -226,6 +226,34 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+/* ── DOC LINKS ──────────────────────────────────────────── */
+.doc-link {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--muted-foreground);
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity 0.12s, color 0.12s, background 0.12s;
+  order: -1;
+}
+.field:hover .doc-link { opacity: 0.6; }
+.doc-link:hover {
+  opacity: 1 !important;
+  color: var(--indigo);
+  background: var(--indigo-muted);
 }
 
 /* ── INPUT / SELECT / TEXTAREA (shadcn style) ─────────── */

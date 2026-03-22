@@ -1,6 +1,6 @@
 import { TRACE_FIELDS, COLORWAY_LIST, getSampleTraces } from './constants.js';
 import { state } from './state.js';
-import { getPath, setPath, deletePath, toHex } from './utils.js';
+import { getPath, setPath, deletePath, toHex, createDocLink } from './utils.js';
 import { syncJSON } from './ui-sync.js';
 import { renderChart } from './chart.js';
 
@@ -14,8 +14,10 @@ function buildTraceField(f, trace, traceIdx) {
   const wrap = document.createElement('div');
   wrap.className = 'field';
 
+  const traceType = trace.type || 'scatter';
   const lbl = document.createElement('label');
-  lbl.textContent = f.label;
+  lbl.appendChild(createDocLink(f.path, traceType));
+  lbl.appendChild(document.createTextNode(f.label));
   wrap.appendChild(lbl);
 
   const val = getPath(trace, f.path);

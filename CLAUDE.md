@@ -67,4 +67,4 @@ No test framework. To verify changes, open `index.html` in a browser (use `pytho
 
 ## Deployment
 
-GitHub Pages via `.github/workflows/deploy.yml` — pushes to `main` or `master` trigger automatic deployment. No build step needed; the workflow just uploads the static files.
+GitHub Pages — configured to deploy from the `master` branch root. No build step, no workflow. Just push and it's live.
