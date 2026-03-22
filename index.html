@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plotly Layout Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ═══════════════════════════════════════════════════
+       LEFT: LAYOUT / TRACES CONTROLS
+  ════════════════════════════════════════════════════ -->
+  <div class="panel" id="controls-panel">
+    <div class="panel-header">
+      <span>⚙</span> Designer
+      <button id="theme-toggle" title="Toggle light/dark">☀</button>
+    </div>
+    <div class="panel-tabs">
+      <button class="panel-tab-btn active" data-panel-tab="layout">Layout</button>
+      <button class="panel-tab-btn" data-panel-tab="traces">Traces</button>
+    </div>
+
+    <!-- LAYOUT TAB -->
+    <div id="panel-tab-layout" style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+      <div class="filter-bar">
+        <span class="filter-bar-icon">⌕</span>
+        <input type="search" class="filter-input" id="controls-filter" placeholder="Filter controls…" autocomplete="off">
+        <button class="filter-clear-btn" id="filter-clear" title="Clear filter">✕</button>
+        <span class="filter-count" id="filter-count"></span>
+      </div>
+      <div class="panel-body" id="controls-body">
+
+      <!-- CANVAS -->
+      <div class="section">
+        <button class="section-toggle open" data-section="canvas">
+          <span class="arrow">▶</span> Canvas
+        </button>
+        <div class="section-body open" id="s-canvas">
+          <div class="field">
+            <label>Autosize</label>
+            <input type="checkbox" class="ctrl" data-path="autosize" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Width</label>
+            <input type="number" class="ctrl" data-path="width" data-type="num" placeholder="auto" min="10" max="4000">
+          </div>
+          <div class="field">
+            <label>Height</label>
+            <input type="number" class="ctrl" data-path="height" data-type="num" placeholder="auto" min="10" max="4000">
+          </div>
+          <div class="field">
+            <label>Paper bg</label>
+            <div class="color-row">
+              <input type="color" data-path="paper_bgcolor" data-type="color-picker">
+              <input type="text" class="ctrl" data-path="paper_bgcolor" data-type="color-text" placeholder="#ffffff">
+            </div>
+          </div>
+          <div class="field">
+            <label>Plot bg</label>
+            <div class="color-row">
+              <input type="color" data-path="plot_bgcolor" data-type="color-picker">
+              <input type="text" class="ctrl" data-path="plot_bgcolor" data-type="color-text" placeholder="#ffffff">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TITLE -->
+      <div class="section">
+        <button class="section-toggle open" data-section="title">
+          <span class="arrow">▶</span> Title
+        </button>
+        <div class="section-body open" id="s-title">
+          <div class="field">
+            <label>Text</label>
+            <input type="text" class="ctrl" data-path="title.text" placeholder="Chart title…">
+          </div>
+          <div class="field">
+            <label>X pos</label>
+            <input type="number" class="ctrl" data-path="title.x" data-type="num" value="0.5" min="0" max="1" step="0.01">
+          </div>
+          <div class="field">
+            <label>Y pos</label>
+            <input type="number" class="ctrl" data-path="title.y" data-type="num" placeholder="auto" min="0" max="1" step="0.01">
+          </div>
+          <div class="field">
+            <label>X anchor</label>
+            <select class="ctrl" data-path="title.xanchor">
+              <option value="auto">auto</option>
+              <option value="left">left</option>
+              <option value="center">center</option>
+              <option value="right">right</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Y anchor</label>
+            <select class="ctrl" data-path="title.yanchor">
+              <option value="auto">auto</option>
+              <option value="top">top</option>
+              <option value="middle">middle</option>
+              <option value="bottom">bottom</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>X ref</label>
+            <select class="ctrl" data-path="title.xref">
+              <option value="paper">paper</option>
+              <option value="container">container</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Y ref</label>
+            <select class="ctrl" data-path="title.yref">
+              <option value="paper">paper</option>
+              <option value="container">container</option>
+            </select>
+          </div>
+          <div class="subsection-label">Title Font</div>
+          <div class="field">
+            <label>Family</label>
+            <select class="ctrl" data-path="title.font.family">
+              <option value="">inherit</option>
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="Helvetica, sans-serif">Helvetica</option>
+              <option value="Times New Roman, serif">Times New Roman</option>
+              <option value="Georgia, serif">Georgia</option>
+              <option value="Verdana, sans-serif">Verdana</option>
+              <option value="Courier New, monospace">Courier New</option>
+              <option value="Open Sans, sans-serif">Open Sans</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Size</label>
+            <input type="number" class="ctrl" data-path="title.font.size" data-type="num" placeholder="auto" min="4" max="96">
+          </div>
+          <div class="field">
+            <label>Color</label>
+            <div class="color-row">
+              <input type="color" data-path="title.font.color" data-type="color-picker">
+              <input type="text" class="ctrl" data-path="title.font.color" data-type="color-text" placeholder="#444444">
+            </div>
+          </div>
+          <div class="field">
+            <label>Weight</label>
+            <select class="ctrl" data-path="title.font.weight">
+              <option value="">normal</option>
+              <option value="bold">bold</option>
+              <option value="300">300</option>
+              <option value="400">400</option>
+              <option value="500">500</option>
+              <option value="600">600</option>
+              <option value="700">700</option>
+              <option value="800">800</option>
+              <option value="900">900</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- GLOBAL FONT -->
+      <div class="section">
+        <button class="section-toggle" data-section="font">
+          <span class="arrow">▶</span> Global Font
+        </button>
+        <div class="section-body" id="s-font">
+          <div class="field">
+            <label>Family</label>
+            <select class="ctrl" data-path="font.family">
+              <option value="">Default (Open Sans)</option>
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="Helvetica, sans-serif">Helvetica</option>
+              <option value="Times New Roman, serif">Times New Roman</option>
+              <option value="Georgia, serif">Georgia</option>
+              <option value="Verdana, sans-serif">Verdana</option>
+              <option value="Courier New, monospace">Courier New</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Size</label>
+            <input type="number" class="ctrl" data-path="font.size" data-type="num" value="12" min="4" max="36">
+          </div>
+          <div class="field">
+            <label>Color</label>
+            <div class="color-row">
+              <input type="color" data-path="font.color" data-type="color-picker" value="#444444">
+              <input type="text" class="ctrl" data-path="font.color" data-type="color-text" placeholder="#444444">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MARGINS -->
+      <div class="section">
+        <button class="section-toggle" data-section="margin">
+          <span class="arrow">▶</span> Margins
+        </button>
+        <div class="section-body" id="s-margin">
+          <div class="field">
+            <label>Left</label>
+            <input type="number" class="ctrl" data-path="margin.l" data-type="num" value="80" min="0" max="300">
+          </div>
+          <div class="field">
+            <label>Right</label>
+            <input type="number" class="ctrl" data-path="margin.r" data-type="num" value="80" min="0" max="300">
+          </div>
+          <div class="field">
+            <label>Top</label>
+            <input type="number" class="ctrl" data-path="margin.t" data-type="num" value="100" min="0" max="300">
+          </div>
+          <div class="field">
+            <label>Bottom</label>
+            <input type="number" class="ctrl" data-path="margin.b" data-type="num" value="80" min="0" max="300">
+          </div>
+          <div class="field">
+            <label>Pad</label>
+            <input type="number" class="ctrl" data-path="margin.pad" data-type="num" value="0" min="0" max="50">
+          </div>
+          <div class="field">
+            <label>Auto expand</label>
+            <input type="checkbox" class="ctrl" data-path="margin.autoexpand" data-type="bool">
+          </div>
+        </div>
+      </div>
+
+      <!-- X AXIS -->
+      <div class="section">
+        <button class="section-toggle open" data-section="xaxis">
+          <span class="arrow">▶</span> X Axis
+        </button>
+        <div class="section-body open" id="s-xaxis">
+          <div class="subsection-label">General</div>
+          <div class="field">
+            <label>Visible</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.visible" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Color</label>
+            <div class="color-row">
+              <input type="color" data-path="xaxis.color" data-type="color-picker" value="#444444">
+              <input type="text" class="ctrl" data-path="xaxis.color" data-type="color-text" placeholder="#444444">
+            </div>
+          </div>
+          <div class="field">
+            <label>Title</label>
+            <input type="text" class="ctrl" data-path="xaxis.title.text" placeholder="X axis title">
+          </div>
+          <div class="field">
+            <label>Type</label>
+            <select class="ctrl" data-path="xaxis.type">
+              <option value="-">auto (-)</option>
+              <option value="linear">linear</option>
+              <option value="log">log</option>
+              <option value="date">date</option>
+              <option value="category">category</option>
+              <option value="multicategory">multicategory</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Auto range</label>
+            <select class="ctrl" data-path="xaxis.autorange" data-type="mixed-bool">
+              <option value="true">true</option>
+              <option value="false">false</option>
+              <option value="reversed">reversed</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Range mode</label>
+            <select class="ctrl" data-path="xaxis.rangemode">
+              <option value="normal">normal</option>
+              <option value="tozero">tozero</option>
+              <option value="nonnegative">nonnegative</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Range min</label>
+            <input type="text" class="ctrl" data-path="xaxis.range[0]" data-type="range-item" placeholder="auto">
+          </div>
+          <div class="field">
+            <label>Range max</label>
+            <input type="text" class="ctrl" data-path="xaxis.range[1]" data-type="range-item" placeholder="auto">
+          </div>
+          <div class="field">
+            <label>Fixed range</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.fixedrange" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Side</label>
+            <select class="ctrl" data-path="xaxis.side">
+              <option value="bottom">bottom</option>
+              <option value="top">top</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Auto margin</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.automargin" data-type="bool">
+          </div>
+          <div class="subsection-label">Grid & Lines</div>
+          <div class="field">
+            <label>Show grid</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.showgrid" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Grid color</label>
+            <div class="color-row">
+              <input type="color" data-path="xaxis.gridcolor" data-type="color-picker" value="#eeeeee">
+              <input type="text" class="ctrl" data-path="xaxis.gridcolor" data-type="color-text" placeholder="#eeeeee">
+            </div>
+          </div>
+          <div class="field">
+            <label>Grid width</label>
+            <input type="number" class="ctrl" data-path="xaxis.gridwidth" data-type="num" value="1" min="0" max="10">
+          </div>
+          <div class="field">
+            <label>Zeroline</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.zeroline" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Show line</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.showline" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Mirror</label>
+            <select class="ctrl" data-path="xaxis.mirror" data-type="mixed-bool">
+              <option value="false">false</option>
+              <option value="true">true</option>
+              <option value="ticks">ticks</option>
+              <option value="all">all</option>
+            </select>
+          </div>
+          <div class="subsection-label">Ticks</div>
+          <div class="field">
+            <label>Ticks</label>
+            <select class="ctrl" data-path="xaxis.ticks">
+              <option value="">none</option>
+              <option value="outside">outside</option>
+              <option value="inside">inside</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Tick mode</label>
+            <select class="ctrl" data-path="xaxis.tickmode">
+              <option value="auto">auto</option>
+              <option value="linear">linear</option>
+              <option value="array">array</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Show labels</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.showticklabels" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Tick angle</label>
+            <input type="number" class="ctrl" data-path="xaxis.tickangle" data-type="num" placeholder="auto" min="-90" max="90">
+          </div>
+          <div class="field">
+            <label>Tick format</label>
+            <input type="text" class="ctrl" data-path="xaxis.tickformat" placeholder="%Y-%m-%d / .2f">
+          </div>
+          <div class="field">
+            <label>Tick prefix</label>
+            <input type="text" class="ctrl" data-path="xaxis.tickprefix" placeholder="">
+          </div>
+          <div class="field">
+            <label>Tick suffix</label>
+            <input type="text" class="ctrl" data-path="xaxis.ticksuffix" placeholder="">
+          </div>
+          <div class="subsection-label">Spikes</div>
+          <div class="field">
+            <label>Show spikes</label>
+            <input type="checkbox" class="ctrl" data-path="xaxis.showspikes" data-type="bool">
+          </div>
+        </div>
+      </div>
+
+      <!-- Y AXIS -->
+      <div class="section">
+        <button class="section-toggle open" data-section="yaxis">
+          <span class="arrow">▶</span> Y Axis
+        </button>
+        <div class="section-body open" id="s-yaxis">
+          <div class="subsection-label">General</div>
+          <div class="field">
+            <label>Visible</label>
+            <input type="checkbox" class="ctrl" data-path="yaxis.visible" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Color</label>
+            <div class="color-row">
+              <input type="color" data-path="yaxis.color" data-type="color-picker" value="#444444">
+              <input type="text" class="ctrl" data-path="yaxis.color" data-type="color-text" placeholder="#444444">
+            </div>
+          </div>
+          <div class="field">
+            <label>Title</label>
+            <input type="text" class="ctrl" data-path="yaxis.title.text" placeholder="Y axis title">
+          </div>
+          <div class="field">
+            <label>Type</label>
+            <select class="ctrl" data-path="yaxis.type">
+              <option value="-">auto (-)</option>
+              <option value="linear">linear</option>
+              <option value="log">log</option>
+              <option value="date">date</option>
+              <option value="category">category</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Auto range</label>
+            <select class="ctrl" data-path="yaxis.autorange" data-type="mixed-bool">
+              <option value="true">true</option>
+              <option value="false">false</option>
+              <option value="reversed">reversed</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Range min</label>
+            <input type="text" class="ctrl" data-path="yaxis.range[0]" data-type="range-item" placeholder="auto">
+          </div>
+          <div class="field">
+            <label>Range max</label>
+            <input type="text" class="ctrl" data-path="yaxis.range[1]" data-type="range-item" placeholder="auto">
+          </div>
+          <div class="field">
+            <label>Side</label>
+            <select class="ctrl" data-path="yaxis.side">
+              <option value="left">left</option>
+              <option value="right">right</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Auto margin</label>
+            <input type="checkbox" class="ctrl" data-path="yaxis.automargin" data-type="bool">
+          </div>
+          <div class="subsection-label">Grid & Lines</div>
+          <div class="field">
+            <label>Show grid</label>
+            <input type="checkbox" class="ctrl" data-path="yaxis.showgrid" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Grid color</label>
+            <div class="color-row">
+              <input type="color" data-path="yaxis.gridcolor" data-type="color-picker" value="#eeeeee">
+              <input type="text" class="ctrl" data-path="yaxis.gridcolor" data-type="color-text" placeholder="#eeeeee">
+            </div>
+          </div>
+          <div class="field">
+            <label>Zeroline</label>
+            <input type="checkbox" class="ctrl" data-path="yaxis.zeroline" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Show line</label>
+            <input type="checkbox" class="ctrl" data-path="yaxis.showline" data-type="bool">
+          </div>
+          <div class="subsection-label">Ticks</div>
+          <div class="field">
+            <label>Ticks</label>
+            <select class="ctrl" data-path="yaxis.ticks">
+              <option value="">none</option>
+              <option value="outside">outside</option>
+              <option value="inside">inside</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Tick format</label>
+            <input type="text" class="ctrl" data-path="yaxis.tickformat" placeholder=".2f / %Y-%m-%d">
+          </div>
+          <div class="field">
+            <label>Show spikes</label>
+            <input type="checkbox" class="ctrl" data-path="yaxis.showspikes" data-type="bool">
+          </div>
+        </div>
+      </div>
+
+      <!-- LEGEND -->
+      <div class="section">
+        <button class="section-toggle" data-section="legend">
+          <span class="arrow">▶</span> Legend
+        </button>
+        <div class="section-body" id="s-legend">
+          <div class="field">
+            <label>Show legend</label>
+            <input type="checkbox" class="ctrl" data-path="showlegend" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Orientation</label>
+            <select class="ctrl" data-path="legend.orientation">
+              <option value="v">vertical</option>
+              <option value="h">horizontal</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>X</label>
+            <input type="number" class="ctrl" data-path="legend.x" data-type="num" placeholder="auto" min="-2" max="3" step="0.01">
+          </div>
+          <div class="field">
+            <label>Y</label>
+            <input type="number" class="ctrl" data-path="legend.y" data-type="num" placeholder="auto" min="-2" max="3" step="0.01">
+          </div>
+          <div class="field">
+            <label>X anchor</label>
+            <select class="ctrl" data-path="legend.xanchor">
+              <option value="auto">auto</option>
+              <option value="left">left</option>
+              <option value="center">center</option>
+              <option value="right">right</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Y anchor</label>
+            <select class="ctrl" data-path="legend.yanchor">
+              <option value="auto">auto</option>
+              <option value="top">top</option>
+              <option value="middle">middle</option>
+              <option value="bottom">bottom</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Bg color</label>
+            <div class="color-row">
+              <input type="color" data-path="legend.bgcolor" data-type="color-picker" value="#ffffff">
+              <input type="text" class="ctrl" data-path="legend.bgcolor" data-type="color-text" placeholder="rgba(255,255,255,0.8)">
+            </div>
+          </div>
+          <div class="field">
+            <label>Border color</label>
+            <div class="color-row">
+              <input type="color" data-path="legend.bordercolor" data-type="color-picker" value="#444444">
+              <input type="text" class="ctrl" data-path="legend.bordercolor" data-type="color-text" placeholder="#444444">
+            </div>
+          </div>
+          <div class="field">
+            <label>Border width</label>
+            <input type="number" class="ctrl" data-path="legend.borderwidth" data-type="num" value="0" min="0" max="10">
+          </div>
+          <div class="field">
+            <label>Trace order</label>
+            <select class="ctrl" data-path="legend.traceorder">
+              <option value="normal">normal</option>
+              <option value="reversed">reversed</option>
+              <option value="grouped">grouped</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Item click</label>
+            <select class="ctrl" data-path="legend.itemclick" data-type="mixed-bool">
+              <option value="toggle">toggle</option>
+              <option value="toggleothers">toggleothers</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+          <div class="subsection-label">Legend Title</div>
+          <div class="field">
+            <label>Title text</label>
+            <input type="text" class="ctrl" data-path="legend.title.text" placeholder="">
+          </div>
+          <div class="field">
+            <label>Title side</label>
+            <select class="ctrl" data-path="legend.title.side">
+              <option value="top">top</option>
+              <option value="left">left</option>
+              <option value="top left">top left</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOVER & INTERACTION -->
+      <div class="section">
+        <button class="section-toggle" data-section="hover">
+          <span class="arrow">▶</span> Hover & Interaction
+        </button>
+        <div class="section-body" id="s-hover">
+          <div class="field">
+            <label>Hover mode</label>
+            <select class="ctrl" data-path="hovermode" data-type="mixed-bool">
+              <option value="closest">closest</option>
+              <option value="x">x</option>
+              <option value="y">y</option>
+              <option value="x unified">x unified</option>
+              <option value="y unified">y unified</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Hover dist</label>
+            <input type="number" class="ctrl" data-path="hoverdistance" data-type="num" value="20" min="-1" max="100">
+          </div>
+          <div class="subsection-label">Mouse Modes</div>
+          <div class="field">
+            <label>Drag mode</label>
+            <select class="ctrl" data-path="dragmode" data-type="mixed-bool">
+              <option value="zoom">zoom</option>
+              <option value="pan">pan</option>
+              <option value="select">select</option>
+              <option value="lasso">lasso</option>
+              <option value="orbit">orbit</option>
+              <option value="turntable">turntable</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Click mode</label>
+            <select class="ctrl" data-path="clickmode">
+              <option value="event">event</option>
+              <option value="select">select</option>
+              <option value="event+select">event+select</option>
+              <option value="none">none</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLOR SCHEME -->
+      <div class="section">
+        <button class="section-toggle" data-section="colorway">
+          <span class="arrow">▶</span> Color Scheme
+        </button>
+        <div class="section-body" id="s-colorway">
+          <div class="field">
+            <label>Preset</label>
+            <select class="ctrl" id="colorway-select">
+              <option value="plotly">Plotly</option>
+              <option value="d3">D3</option>
+              <option value="g10">G10</option>
+              <option value="t10">T10</option>
+              <option value="dark24">Dark24</option>
+              <option value="light24">Light24</option>
+              <option value="safe">Safe (accessible)</option>
+              <option value="vivid">Vivid</option>
+              <option value="pastel">Pastel</option>
+              <option value="antique">Antique</option>
+              <option value="bold">Bold</option>
+              <option value="prism">Prism</option>
+              <option value="custom">Custom…</option>
+            </select>
+          </div>
+          <div id="colorway-swatches"></div>
+          <div id="colorway-custom" style="display:none; margin-top:8px;">
+            <div class="field-hint">Comma-separated hex colors</div>
+            <textarea class="ctrl" id="colorway-custom-input" rows="3"
+              style="width:100%;font-family:monospace;font-size:10px;"
+              placeholder="#636efa,#EF553B,#00cc96…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEBAR -->
+      <div class="section">
+        <button class="section-toggle" data-section="modebar">
+          <span class="arrow">▶</span> Modebar
+        </button>
+        <div class="section-body" id="s-modebar">
+          <div class="field">
+            <label>Orientation</label>
+            <select class="ctrl" data-path="modebar.orientation">
+              <option value="h">horizontal</option>
+              <option value="v">vertical</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Bg color</label>
+            <div class="color-row">
+              <input type="color" data-path="modebar.bgcolor" data-type="color-picker" value="#ffffff">
+              <input type="text" class="ctrl" data-path="modebar.bgcolor" data-type="color-text" placeholder="">
+            </div>
+          </div>
+          <div class="field">
+            <label>Icon color</label>
+            <div class="color-row">
+              <input type="color" data-path="modebar.color" data-type="color-picker" value="#444444">
+              <input type="text" class="ctrl" data-path="modebar.color" data-type="color-text" placeholder="">
+            </div>
+          </div>
+          <div class="field">
+            <label>Active color</label>
+            <div class="color-row">
+              <input type="color" data-path="modebar.activecolor" data-type="color-picker" value="#1f77b4">
+              <input type="text" class="ctrl" data-path="modebar.activecolor" data-type="color-text" placeholder="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSITION -->
+      <div class="section">
+        <button class="section-toggle" data-section="transition">
+          <span class="arrow">▶</span> Transition
+        </button>
+        <div class="section-body" id="s-transition">
+          <div class="field">
+            <label>Duration (ms)</label>
+            <input type="number" class="ctrl" data-path="transition.duration" data-type="num" value="500" min="0" max="5000">
+          </div>
+          <div class="field">
+            <label>Easing</label>
+            <select class="ctrl" data-path="transition.easing">
+              <option value="linear">linear</option>
+              <option value="quad">quad</option>
+              <option value="cubic">cubic</option>
+              <option value="sin">sin</option>
+              <option value="exp">exp</option>
+              <option value="circle">circle</option>
+              <option value="elastic">elastic</option>
+              <option value="back">back</option>
+              <option value="bounce">bounce</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISC -->
+      <div class="section">
+        <button class="section-toggle" data-section="misc">
+          <span class="arrow">▶</span> Misc
+        </button>
+        <div class="section-body" id="s-misc">
+          <div class="field">
+            <label>Separators</label>
+            <input type="text" class="ctrl" data-path="separators" placeholder=".," maxlength="2">
+          </div>
+          <div class="field">
+            <label>Hide sources</label>
+            <input type="checkbox" class="ctrl" data-path="hidesources" data-type="bool">
+          </div>
+          <div class="field">
+            <label>Min width</label>
+            <input type="number" class="ctrl" data-path="minreducedwidth" data-type="num" value="64" min="2">
+          </div>
+          <div class="field">
+            <label>Min height</label>
+            <input type="number" class="ctrl" data-path="minreducedheight" data-type="num" value="64" min="2">
+          </div>
+        </div>
+      </div>
+
+      </div><!-- end controls-body -->
+    </div><!-- end panel-tab-layout -->
+
+    <!-- TRACES TAB -->
+    <div id="panel-tab-traces" style="display:none;flex-direction:column;flex:1;overflow:hidden;">
+      <div class="trace-selector" id="trace-selector"></div>
+      <div class="filter-bar">
+        <span class="filter-bar-icon">⌕</span>
+        <input type="search" class="filter-input" id="trace-filter" placeholder="Filter trace properties…" autocomplete="off">
+        <button class="filter-clear-btn" id="trace-filter-clear" title="Clear">✕</button>
+        <span class="filter-count" id="trace-filter-count"></span>
+      </div>
+      <div class="panel-body" id="trace-editor-body">
+        <div id="trace-editor-fields"></div>
+      </div>
+    </div><!-- end panel-tab-traces -->
+
+  </div><!-- end controls-panel -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+       MIDDLE: CHART PREVIEW
+  ════════════════════════════════════════════════════ -->
+  <div class="panel" id="chart-panel">
+    <div class="panel-header">
+      <span>📊</span> Chart Preview
+    </div>
+    <div class="toolbar">
+      <label>Trace type</label>
+      <select id="trace-type-select">
+        <option value="scatter">Scatter / Line</option>
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="histogram">Histogram</option>
+        <option value="box">Box</option>
+        <option value="violin">Violin</option>
+        <option value="heatmap">Heatmap</option>
+        <option value="contour">Contour</option>
+        <option value="scatter3d">Scatter 3D</option>
+        <option value="surface">Surface</option>
+        <option value="funnel">Funnel</option>
+        <option value="waterfall">Waterfall</option>
+        <option value="treemap">Treemap</option>
+        <option value="sunburst">Sunburst</option>
+        <option value="indicator">Indicator</option>
+      </select>
+      <label>Mode</label>
+      <select id="scatter-mode-select">
+        <option value="lines+markers">Lines+Markers</option>
+        <option value="lines">Lines</option>
+        <option value="markers">Markers</option>
+        <option value="text">Text</option>
+      </select>
+      <button id="btn-reset">↺ Reset</button>
+      <button id="btn-add-trace">+ Trace</button>
+    </div>
+    <div id="chart"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       RIGHT: JSON EDITOR
+  ════════════════════════════════════════════════════ -->
+  <div class="panel" id="json-panel">
+    <div class="panel-header">
+      <span>{}</span> JSON
+      <div class="json-tabs">
+        <button class="json-tab-btn active" data-json-tab="layout">layout</button>
+        <button class="json-tab-btn" data-json-tab="data">data</button>
+        <button class="json-tab-btn" data-json-tab="full">full</button>
+      </div>
+    </div>
+    <div class="json-toolbar">
+      <button id="btn-format">Format</button>
+      <button id="btn-minify">Minify</button>
+      <button id="btn-copy">Copy</button>
+      <button id="btn-apply">Apply ↵</button>
+      <button id="btn-export">Export</button>
+      <span id="json-status" class="ok">✓ valid</span>
+    </div>
+    <textarea id="json-editor" spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+  </div>
+
+</div><!-- end app -->
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
