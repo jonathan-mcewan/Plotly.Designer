@@ -93,6 +93,51 @@ export function getSampleTraces(type, mode) {
         value:420, delta:{reference:380},
         gauge:{axis:{range:[null,500]}, bar:{color:'darkblue'}},
         title:{text:'Speed'} }];
+    case 'scattergeo':
+      return [{
+        type:'scattergeo', mode:'markers',
+        lon:[-73.9,-118.2,-87.6,-95.4,-122.4,-80.2,-112.1,-71.1],
+        lat:[40.7,34.1,41.9,29.8,37.8,25.8,33.4,42.4],
+        text:['New York','Los Angeles','Chicago','Houston','San Francisco','Miami','Phoenix','Boston'],
+        marker:{size:10,color:'#636efa'},
+        name:'US Cities'
+      }];
+    case 'choropleth':
+      return [{
+        type:'choropleth', locationmode:'ISO-3',
+        locations:['USA','CAN','BRA','GBR','FRA','DEU','CHN','IND','AUS','JPN'],
+        z:[327,37,211,67,65,83,1400,1380,25,126],
+        text:['United States','Canada','Brazil','United Kingdom','France','Germany','China','India','Australia','Japan'],
+        colorscale:'Blues',
+        name:'Population (M)'
+      }];
+    case 'scattermapbox':
+      return [{
+        type:'scattermapbox', mode:'markers',
+        lon:[-73.9,-118.2,-87.6,-95.4,-122.4],
+        lat:[40.7,34.1,41.9,29.8,37.8],
+        text:['New York','Los Angeles','Chicago','Houston','San Francisco'],
+        marker:{size:12,color:'#636efa'},
+        name:'US Cities'
+      }];
+    case 'choroplethmapbox':
+      return [{
+        type:'choroplethmapbox',
+        geojson:'https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json',
+        locations:['06001','06013','06075','17031','36061'],
+        z:[10,20,30,40,50],
+        colorscale:'Viridis',
+        name:'Sample Counties'
+      }];
+    case 'densitymapbox':
+      return [{
+        type:'densitymapbox',
+        lon:Array.from({length:50},()=>-122.4+(Math.random()-0.5)*0.4),
+        lat:Array.from({length:50},()=>37.8+(Math.random()-0.5)*0.3),
+        z:Array.from({length:50},()=>Math.random()*10),
+        radius:15,
+        name:'Density'
+      }];
     default:
       return [{ type:'scatter', mode:'lines+markers', x, y:ya, name:'Series A' }];
   }
@@ -311,5 +356,68 @@ export const TRACE_FIELDS = {
     { label:'Bar color',   path:'gauge.bar.color', kind:'color' },
     { label:'Bar thickness',path:'gauge.bar.thickness', kind:'num', min:0, max:1, step:0.05 },
     { label:'BG color',    path:'gauge.bgcolor', kind:'color' },
+  ],
+  scattergeo: [
+    { label:'Mode',         path:'mode',          kind:'select', opts:['markers','lines','lines+markers','text','none'] },
+    { label:'Location mode',path:'locationmode',  kind:'select', opts:['ISO-3','country names','USA-states','geojson-id'] },
+    { sec:'Marker' },
+    { label:'Color',        path:'marker.color',  kind:'color' },
+    { label:'Size',         path:'marker.size',   kind:'num', min:1, max:50 },
+    { label:'Symbol',       path:'marker.symbol', kind:'select', opts:['circle','square','diamond','cross','x','triangle-up','triangle-down','star','hexagon','pentagon'] },
+    { label:'Opacity',      path:'marker.opacity',kind:'num', min:0, max:1, step:0.01 },
+    { label:'Line color',   path:'marker.line.color', kind:'color' },
+    { label:'Line width',   path:'marker.line.width', kind:'num', min:0, max:8 },
+    { sec:'Line' },
+    { label:'Color',        path:'line.color',    kind:'color' },
+    { label:'Width',        path:'line.width',    kind:'num', min:0, max:20 },
+    { label:'Dash',         path:'line.dash',     kind:'select', opts:['solid','dot','dash','longdash','dashdot','longdashdot'] },
+  ],
+  choropleth: [
+    { label:'Location mode',path:'locationmode',  kind:'select', opts:['ISO-3','country names','USA-states','geojson-id'] },
+    { label:'Colorscale',   path:'colorscale',    kind:'select', opts:['Viridis','Plasma','Cividis','Inferno','Magma','RdBu','Blues','Greens','Hot','Jet','Rainbow','RdYlBu','Spectral','YlOrRd','Electric','Greys'] },
+    { label:'Reverse scale',path:'reversescale',  kind:'bool' },
+    { label:'Show scale',   path:'showscale',     kind:'bool' },
+    { label:'Z auto',       path:'zauto',         kind:'bool' },
+    { label:'Z min',        path:'zmin',          kind:'num' },
+    { label:'Z max',        path:'zmax',          kind:'num' },
+    { sec:'Marker' },
+    { label:'Line color',   path:'marker.line.color', kind:'color' },
+    { label:'Line width',   path:'marker.line.width', kind:'num', min:0, max:5 },
+  ],
+  scattermapbox: [
+    { label:'Mode',         path:'mode',          kind:'select', opts:['markers','lines','lines+markers','text','none'] },
+    { label:'Below',        path:'below',         kind:'text' },
+    { sec:'Marker' },
+    { label:'Color',        path:'marker.color',  kind:'color' },
+    { label:'Size',         path:'marker.size',   kind:'num', min:1, max:50 },
+    { label:'Symbol',       path:'marker.symbol', kind:'text', placeholder:'circle / marker / …' },
+    { label:'Opacity',      path:'marker.opacity',kind:'num', min:0, max:1, step:0.01 },
+    { sec:'Line' },
+    { label:'Color',        path:'line.color',    kind:'color' },
+    { label:'Width',        path:'line.width',    kind:'num', min:0, max:20 },
+  ],
+  choroplethmapbox: [
+    { label:'GeoJSON URL',  path:'geojson',       kind:'text', placeholder:'https://…' },
+    { label:'Feature ID key',path:'featureidkey', kind:'text', placeholder:'properties.NAME' },
+    { label:'Colorscale',   path:'colorscale',    kind:'select', opts:['Viridis','Plasma','Cividis','Inferno','Magma','RdBu','Blues','Greens','Hot','Jet','Rainbow','RdYlBu','Spectral','YlOrRd','Electric','Greys'] },
+    { label:'Reverse scale',path:'reversescale',  kind:'bool' },
+    { label:'Show scale',   path:'showscale',     kind:'bool' },
+    { label:'Z auto',       path:'zauto',         kind:'bool' },
+    { label:'Z min',        path:'zmin',          kind:'num' },
+    { label:'Z max',        path:'zmax',          kind:'num' },
+    { sec:'Marker' },
+    { label:'Line color',   path:'marker.line.color', kind:'color' },
+    { label:'Line width',   path:'marker.line.width', kind:'num', min:0, max:5 },
+    { label:'Opacity',      path:'marker.opacity',kind:'num', min:0, max:1, step:0.01 },
+  ],
+  densitymapbox: [
+    { label:'Radius',       path:'radius',        kind:'num', min:1, max:50 },
+    { label:'Colorscale',   path:'colorscale',    kind:'select', opts:['Viridis','Plasma','Cividis','Inferno','Magma','RdBu','Blues','Greens','Hot','Jet','Rainbow','RdYlBu','Spectral','YlOrRd','Electric','Greys'] },
+    { label:'Reverse scale',path:'reversescale',  kind:'bool' },
+    { label:'Show scale',   path:'showscale',     kind:'bool' },
+    { label:'Z auto',       path:'zauto',         kind:'bool' },
+    { label:'Z min',        path:'zmin',          kind:'num' },
+    { label:'Z max',        path:'zmax',          kind:'num' },
+    { label:'Below',        path:'below',         kind:'text' },
   ],
 };

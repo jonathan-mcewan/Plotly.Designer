@@ -81,8 +81,14 @@ export function syncUI() {
   }
 }
 
+export function updateDocTitle() {
+  const t = state.layout?.title?.text;
+  document.title = (t && t !== 'My Plotly Chart') ? `${t} — Plotly Designer` : 'Plotly Designer';
+}
+
 export function applyAndRender() {
   syncJSON();
+  updateDocTitle();
   clearTimeout(state.renderTimer);
   state.renderTimer = setTimeout(renderChart, 80);
 }

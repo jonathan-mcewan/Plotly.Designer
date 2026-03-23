@@ -29,6 +29,9 @@
   --indigo-muted:       hsl(243 75% 59% / 0.15);
   --green:              hsl(142 71% 45%);
   --red:                hsl(0 72% 51%);
+  --hover-border:       hsl(240 5% 30%);
+  --mark-color:         hsl(243 100% 80%);
+  --swatch-border:      hsl(0 0% 100% / 0.08);
 }
 
 /* ── LIGHT THEME ─────────────────────────────────────── */
@@ -52,6 +55,9 @@
   --indigo-muted:       hsl(243 75% 59% / 0.12);
   --green:              hsl(142 71% 35%);
   --red:                hsl(0 72% 51%);
+  --hover-border:       hsl(240 5% 75%);
+  --mark-color:         hsl(243 75% 45%);
+  --swatch-border:      hsl(0 0% 0% / 0.12);
 }
 
 html, body { height: 100%; overflow: hidden; }
@@ -155,7 +161,7 @@ body {
 }
 .toolbar button:hover {
   background: var(--accent);
-  border-color: hsl(240 5% 30%);
+  border-color: var(--hover-border);
 }
 .toolbar button:active { background: var(--surface); }
 
@@ -275,7 +281,7 @@ body {
   border-color: var(--ring);
   box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
 }
-.ctrl:hover:not(:focus) { border-color: hsl(240 5% 30%); }
+.ctrl:hover:not(:focus) { border-color: var(--hover-border); }
 
 input[type=number].ctrl { -moz-appearance: textfield; appearance: textfield; }
 input[type=number].ctrl::-webkit-outer-spin-button,
@@ -369,7 +375,7 @@ select.ctrl { cursor: pointer; }
   border-color: var(--ring);
   box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
 }
-.color-row input[type=text]:hover:not(:focus) { border-color: hsl(240 5% 30%); }
+.color-row input[type=text]:hover:not(:focus) { border-color: var(--hover-border); }
 
 /* ── FILTER BAR ──────────────────────────────────────── */
 .filter-bar {
@@ -432,7 +438,7 @@ select.ctrl { cursor: pointer; }
 .filter-clear-btn:hover {
   background: var(--accent);
   color: var(--foreground);
-  border-color: hsl(240 5% 30%);
+  border-color: var(--hover-border);
 }
 .filter-count {
   font-size: 10px;
@@ -447,7 +453,7 @@ select.ctrl { cursor: pointer; }
 .section.filter-empty { display: none !important; }
 .field mark {
   background: var(--indigo-muted);
-  color: hsl(243 100% 80%);
+  color: var(--mark-color);
   border-radius: 2px;
   padding: 0 2px;
   font-style: normal;
@@ -492,7 +498,7 @@ select.ctrl { cursor: pointer; }
 .json-toolbar button:hover {
   background: var(--accent);
   color: var(--accent-foreground);
-  border-color: hsl(240 5% 30%);
+  border-color: var(--hover-border);
 }
 .json-toolbar button:active { background: var(--surface-raised); }
 
@@ -537,7 +543,7 @@ select.ctrl { cursor: pointer; }
   width: 20px;
   height: 20px;
   border-radius: calc(var(--radius) / 2);
-  border: 1px solid hsl(0 0% 100% / 0.08);
+  border: 1px solid var(--swatch-border);
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.1s;
 }
@@ -654,7 +660,7 @@ select.ctrl { cursor: pointer; }
   cursor: pointer;
   transition: background 0.1s, color 0.1s, border-color 0.1s;
 }
-.trace-pill:hover { border-color: hsl(240 5% 40%); color: var(--foreground); }
+.trace-pill:hover { border-color: var(--hover-border); color: var(--foreground); }
 .trace-pill.active { background: var(--indigo); border-color: var(--indigo); color: white; }
 .trace-pill .pill-dot {
   width: 7px; height: 7px;
@@ -685,4 +691,4 @@ select.ctrl { cursor: pointer; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: hsl(240 5% 30%); }
+::-webkit-scrollbar-thumb:hover { background: var(--hover-border); }

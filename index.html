@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plotly Layout Designer</title>
+<title>Plotly Designer</title>
+<meta name="description" content="Visual designer for Plotly.js charts. Build layouts, configure traces, and export chart code — no server required.">
+<meta name="theme-color" content="#636efa">
+<meta property="og:title" content="Plotly Designer">
+<meta property="og:description" content="Visual designer for Plotly.js charts. Build layouts, configure traces, and export.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23636efa'/%3E%3Cpath d='M6 24L10 14L14 18L18 8L22 16L26 6' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -687,6 +693,202 @@
         </div>
       </div>
 
+      <!-- GEO -->
+      <div class="section">
+        <button class="section-toggle" data-section="geo">
+          <span class="arrow">▶</span> Geo (Map)
+        </button>
+        <div class="section-body" id="s-geo">
+          <div class="subsection-label">Projection</div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-projection-type" target="_blank" rel="noopener" title="Plotly docs: geo.projection.type">?</a>Type</label>
+            <select class="ctrl" data-path="geo.projection.type">
+              <option value="">default</option>
+              <option value="equirectangular">equirectangular</option>
+              <option value="mercator">mercator</option>
+              <option value="orthographic">orthographic</option>
+              <option value="natural earth">natural earth</option>
+              <option value="albers usa">albers usa</option>
+              <option value="robinson">robinson</option>
+              <option value="miller">miller</option>
+              <option value="kavrayskiy7">kavrayskiy7</option>
+              <option value="winkel tripel">winkel tripel</option>
+              <option value="aitoff">aitoff</option>
+              <option value="sinusoidal">sinusoidal</option>
+              <option value="mollweide">mollweide</option>
+              <option value="hammer">hammer</option>
+              <option value="stereographic">stereographic</option>
+              <option value="eckert4">eckert4</option>
+            </select>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-projection-rotation-lon" target="_blank" rel="noopener" title="Plotly docs: geo.projection.rotation.lon">?</a>Rotation lon</label>
+            <input type="number" class="ctrl" data-path="geo.projection.rotation.lon" data-type="num" min="-180" max="180">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-projection-rotation-lat" target="_blank" rel="noopener" title="Plotly docs: geo.projection.rotation.lat">?</a>Rotation lat</label>
+            <input type="number" class="ctrl" data-path="geo.projection.rotation.lat" data-type="num" min="-90" max="90">
+          </div>
+          <div class="subsection-label">Scope & Center</div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-scope" target="_blank" rel="noopener" title="Plotly docs: geo.scope">?</a>Scope</label>
+            <select class="ctrl" data-path="geo.scope">
+              <option value="world">world</option>
+              <option value="usa">usa</option>
+              <option value="europe">europe</option>
+              <option value="asia">asia</option>
+              <option value="africa">africa</option>
+              <option value="north america">north america</option>
+              <option value="south america">south america</option>
+            </select>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-center-lon" target="_blank" rel="noopener" title="Plotly docs: geo.center.lon">?</a>Center lon</label>
+            <input type="number" class="ctrl" data-path="geo.center.lon" data-type="num" min="-180" max="180">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-center-lat" target="_blank" rel="noopener" title="Plotly docs: geo.center.lat">?</a>Center lat</label>
+            <input type="number" class="ctrl" data-path="geo.center.lat" data-type="num" min="-90" max="90">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-fitbounds" target="_blank" rel="noopener" title="Plotly docs: geo.fitbounds">?</a>Fit bounds</label>
+            <select class="ctrl" data-path="geo.fitbounds" data-type="mixed-bool">
+              <option value="false">false</option>
+              <option value="locations">locations</option>
+              <option value="geojson">geojson</option>
+            </select>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-resolution" target="_blank" rel="noopener" title="Plotly docs: geo.resolution">?</a>Resolution</label>
+            <select class="ctrl" data-path="geo.resolution" data-type="num">
+              <option value="110">110 (low)</option>
+              <option value="50">50 (high)</option>
+            </select>
+          </div>
+          <div class="subsection-label">Features</div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-showland" target="_blank" rel="noopener" title="Plotly docs: geo.showland">?</a>Show land</label>
+            <input type="checkbox" class="ctrl" data-path="geo.showland" data-type="bool">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-landcolor" target="_blank" rel="noopener" title="Plotly docs: geo.landcolor">?</a>Land color</label>
+            <div class="color-row">
+              <input type="color" data-path="geo.landcolor" data-type="color-picker" value="#e5ecf6">
+              <input type="text" class="ctrl" data-path="geo.landcolor" data-type="color-text" placeholder="#e5ecf6">
+            </div>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-showocean" target="_blank" rel="noopener" title="Plotly docs: geo.showocean">?</a>Show ocean</label>
+            <input type="checkbox" class="ctrl" data-path="geo.showocean" data-type="bool">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-oceancolor" target="_blank" rel="noopener" title="Plotly docs: geo.oceancolor">?</a>Ocean color</label>
+            <div class="color-row">
+              <input type="color" data-path="geo.oceancolor" data-type="color-picker" value="#ccdfff">
+              <input type="text" class="ctrl" data-path="geo.oceancolor" data-type="color-text" placeholder="#ccdfff">
+            </div>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-showlakes" target="_blank" rel="noopener" title="Plotly docs: geo.showlakes">?</a>Show lakes</label>
+            <input type="checkbox" class="ctrl" data-path="geo.showlakes" data-type="bool">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-lakecolor" target="_blank" rel="noopener" title="Plotly docs: geo.lakecolor">?</a>Lake color</label>
+            <div class="color-row">
+              <input type="color" data-path="geo.lakecolor" data-type="color-picker" value="#ccdfff">
+              <input type="text" class="ctrl" data-path="geo.lakecolor" data-type="color-text" placeholder="#ccdfff">
+            </div>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-showcountries" target="_blank" rel="noopener" title="Plotly docs: geo.showcountries">?</a>Show countries</label>
+            <input type="checkbox" class="ctrl" data-path="geo.showcountries" data-type="bool">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-countrycolor" target="_blank" rel="noopener" title="Plotly docs: geo.countrycolor">?</a>Country color</label>
+            <div class="color-row">
+              <input type="color" data-path="geo.countrycolor" data-type="color-picker" value="#444444">
+              <input type="text" class="ctrl" data-path="geo.countrycolor" data-type="color-text" placeholder="#444444">
+            </div>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-countrywidth" target="_blank" rel="noopener" title="Plotly docs: geo.countrywidth">?</a>Country width</label>
+            <input type="number" class="ctrl" data-path="geo.countrywidth" data-type="num" min="0" max="10" value="1">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-showcoastlines" target="_blank" rel="noopener" title="Plotly docs: geo.showcoastlines">?</a>Coastlines</label>
+            <input type="checkbox" class="ctrl" data-path="geo.showcoastlines" data-type="bool">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-coastlinecolor" target="_blank" rel="noopener" title="Plotly docs: geo.coastlinecolor">?</a>Coast color</label>
+            <div class="color-row">
+              <input type="color" data-path="geo.coastlinecolor" data-type="color-picker" value="#444444">
+              <input type="text" class="ctrl" data-path="geo.coastlinecolor" data-type="color-text" placeholder="#444444">
+            </div>
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-showframe" target="_blank" rel="noopener" title="Plotly docs: geo.showframe">?</a>Show frame</label>
+            <input type="checkbox" class="ctrl" data-path="geo.showframe" data-type="bool">
+          </div>
+          <div class="subsection-label">Background</div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-geo-bgcolor" target="_blank" rel="noopener" title="Plotly docs: geo.bgcolor">?</a>Bg color</label>
+            <div class="color-row">
+              <input type="color" data-path="geo.bgcolor" data-type="color-picker" value="#ffffff">
+              <input type="text" class="ctrl" data-path="geo.bgcolor" data-type="color-text" placeholder="#ffffff">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAPBOX -->
+      <div class="section">
+        <button class="section-toggle" data-section="mapbox">
+          <span class="arrow">▶</span> Mapbox
+        </button>
+        <div class="section-body" id="s-mapbox">
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-style" target="_blank" rel="noopener" title="Plotly docs: mapbox.style">?</a>Style</label>
+            <select class="ctrl" data-path="mapbox.style">
+              <option value="open-street-map">open-street-map</option>
+              <option value="carto-positron">carto-positron</option>
+              <option value="carto-darkmatter">carto-darkmatter</option>
+              <option value="stamen-terrain">stamen-terrain</option>
+              <option value="stamen-toner">stamen-toner</option>
+              <option value="stamen-watercolor">stamen-watercolor</option>
+              <option value="white-bg">white-bg</option>
+              <option value="basic">basic (token)</option>
+              <option value="streets">streets (token)</option>
+              <option value="outdoors">outdoors (token)</option>
+              <option value="light">light (token)</option>
+              <option value="dark">dark (token)</option>
+              <option value="satellite">satellite (token)</option>
+              <option value="satellite-streets">satellite-streets (token)</option>
+            </select>
+          </div>
+          <div class="field-hint">Styles without "(token)" work without a Mapbox access token.</div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-center-lon" target="_blank" rel="noopener" title="Plotly docs: mapbox.center.lon">?</a>Center lon</label>
+            <input type="number" class="ctrl" data-path="mapbox.center.lon" data-type="num" min="-180" max="180">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-center-lat" target="_blank" rel="noopener" title="Plotly docs: mapbox.center.lat">?</a>Center lat</label>
+            <input type="number" class="ctrl" data-path="mapbox.center.lat" data-type="num" min="-90" max="90">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-zoom" target="_blank" rel="noopener" title="Plotly docs: mapbox.zoom">?</a>Zoom</label>
+            <input type="number" class="ctrl" data-path="mapbox.zoom" data-type="num" min="0" max="20" step="0.5">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-bearing" target="_blank" rel="noopener" title="Plotly docs: mapbox.bearing">?</a>Bearing</label>
+            <input type="number" class="ctrl" data-path="mapbox.bearing" data-type="num" min="0" max="360">
+          </div>
+          <div class="field">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-pitch" target="_blank" rel="noopener" title="Plotly docs: mapbox.pitch">?</a>Pitch</label>
+            <input type="number" class="ctrl" data-path="mapbox.pitch" data-type="num" min="0" max="60">
+          </div>
+        </div>
+      </div>
+
       <!-- TRANSITION -->
       <div class="section">
         <button class="section-toggle" data-section="transition">
@@ -769,21 +971,38 @@
     <div class="toolbar">
       <label>Trace type</label>
       <select id="trace-type-select">
-        <option value="scatter">Scatter / Line</option>
-        <option value="bar">Bar</option>
-        <option value="pie">Pie</option>
-        <option value="histogram">Histogram</option>
-        <option value="box">Box</option>
-        <option value="violin">Violin</option>
-        <option value="heatmap">Heatmap</option>
-        <option value="contour">Contour</option>
-        <option value="scatter3d">Scatter 3D</option>
-        <option value="surface">Surface</option>
-        <option value="funnel">Funnel</option>
-        <option value="waterfall">Waterfall</option>
-        <option value="treemap">Treemap</option>
-        <option value="sunburst">Sunburst</option>
-        <option value="indicator">Indicator</option>
+        <optgroup label="Cartesian">
+          <option value="scatter">Scatter / Line</option>
+          <option value="bar">Bar</option>
+          <option value="histogram">Histogram</option>
+          <option value="box">Box</option>
+          <option value="violin">Violin</option>
+        </optgroup>
+        <optgroup label="Part-of-Whole">
+          <option value="pie">Pie</option>
+          <option value="funnel">Funnel</option>
+          <option value="waterfall">Waterfall</option>
+          <option value="treemap">Treemap</option>
+          <option value="sunburst">Sunburst</option>
+        </optgroup>
+        <optgroup label="2D Continuous">
+          <option value="heatmap">Heatmap</option>
+          <option value="contour">Contour</option>
+        </optgroup>
+        <optgroup label="3D">
+          <option value="scatter3d">Scatter 3D</option>
+          <option value="surface">Surface</option>
+        </optgroup>
+        <optgroup label="Maps">
+          <option value="scattergeo">Scatter Geo</option>
+          <option value="choropleth">Choropleth</option>
+          <option value="scattermapbox">Scatter Mapbox</option>
+          <option value="choroplethmapbox">Choropleth Mapbox</option>
+          <option value="densitymapbox">Density Mapbox</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="indicator">Indicator</option>
+        </optgroup>
       </select>
       <label>Mode</label>
       <select id="scatter-mode-select">

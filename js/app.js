@@ -1,3 +1,12 @@
+if (typeof Plotly === 'undefined') {
+  document.getElementById('chart').innerHTML = `
+    <div style="padding:40px;text-align:center;color:var(--red)">
+      <p style="font-size:16px;font-weight:600">Failed to load Plotly.js</p>
+      <p style="margin-top:8px;color:var(--muted-foreground)">Check your connection and refresh the page.</p>
+    </div>`;
+  throw new Error('Plotly.js not loaded');
+}
+
 import { getSampleTraces } from './constants.js';
 import { state, getDefaultLayout } from './state.js';
 import { renderChart } from './chart.js';
@@ -59,6 +68,18 @@ document.getElementById('trace-type-select').addEventListener('change', function
   state.currentTraceType = this.value;
   state.traces = getSampleTraces(state.currentTraceType, state.currentScatterMode);
   state.chartInitialized = false;
+  // Inject default layout for map types
+  if (['scattermapbox','choroplethmapbox','densitymapbox'].includes(state.currentTraceType)) {
+    if (!state.layout.mapbox) state.layout.mapbox = {};
+    if (!state.layout.mapbox.style) state.layout.mapbox.style = 'open-street-map';
+    if (!state.layout.mapbox.center) state.layout.mapbox.center = { lon: -98, lat: 38 };
+    if (!state.layout.mapbox.zoom) state.layout.mapbox.zoom = 3;
+  }
+  if (['scattergeo','choropleth'].includes(state.currentTraceType)) {
+    if (!state.layout.geo) state.layout.geo = {};
+    if (state.layout.geo.showland === undefined) state.layout.geo.showland = true;
+  }
+  syncUI();
   renderTraceSelector();
   renderTraceEditor(0);
   syncJSON();
