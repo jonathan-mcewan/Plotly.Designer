@@ -3,7 +3,7 @@
 A standalone, browser-based visual editor for building and customizing [Plotly.js](https://plotly.com/javascript/) charts. No server, no build step — just open `index.html` or visit the [live site](https://jonathan-mcewan.github.io/Plotly.Designer/).
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
-![Plotly.js](https://img.shields.io/badge/plotly.js-2.35.2-3F4F75)
+![Plotly.js](https://img.shields.io/badge/plotly.js-3.4.0-3F4F75)
 ![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 
 ---
@@ -103,7 +103,7 @@ Plotly.Designer/
 
 ## Tech
 
-- **Plotly.js 2.35.2** via CDN — no bundling needed
+- **Plotly.js 3.4.0** via CDN — no bundling needed
 - **ES Modules** — native browser imports, no transpiler
 - **CSS Custom Properties** — shadcn/ui zinc palette for both dark and light themes
 - **Zero dependencies** — no React, no framework, no build tools

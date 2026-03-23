@@ -88,7 +88,7 @@ export function initJsonEditor() {
     const chartTitle = state.layout?.title?.text || 'Plotly Chart';
     const exportHtml = `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"><title>${chartTitle}</title>
-<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"><\/script>
+<script src="https://cdn.plot.ly/plotly-3.4.0.min.js"><\/script>
 </head><body>
 <div id="chart" style="width:100%;height:100vh;"></div>
 <script>
