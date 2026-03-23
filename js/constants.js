@@ -111,27 +111,27 @@ export function getSampleTraces(type, mode) {
         colorscale:'Blues',
         name:'Population (M)'
       }];
-    case 'scattermapbox':
+    case 'scattermap':
       return [{
-        type:'scattermapbox', mode:'markers',
+        type:'scattermap', mode:'markers',
         lon:[-73.9,-118.2,-87.6,-95.4,-122.4],
         lat:[40.7,34.1,41.9,29.8,37.8],
         text:['New York','Los Angeles','Chicago','Houston','San Francisco'],
         marker:{size:12,color:'#636efa'},
         name:'US Cities'
       }];
-    case 'choroplethmapbox':
+    case 'choroplethmap':
       return [{
-        type:'choroplethmapbox',
+        type:'choroplethmap',
         geojson:'https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json',
         locations:['06001','06013','06075','17031','36061'],
         z:[10,20,30,40,50],
         colorscale:'Viridis',
         name:'Sample Counties'
       }];
-    case 'densitymapbox':
+    case 'densitymap':
       return [{
-        type:'densitymapbox',
+        type:'densitymap',
         lon:Array.from({length:50},()=>-122.4+(Math.random()-0.5)*0.4),
         lat:Array.from({length:50},()=>37.8+(Math.random()-0.5)*0.3),
         z:Array.from({length:50},()=>Math.random()*10),
@@ -384,7 +384,7 @@ export const TRACE_FIELDS = {
     { label:'Line color',   path:'marker.line.color', kind:'color' },
     { label:'Line width',   path:'marker.line.width', kind:'num', min:0, max:5 },
   ],
-  scattermapbox: [
+  scattermap: [
     { label:'Mode',         path:'mode',          kind:'select', opts:['markers','lines','lines+markers','text','none'] },
     { label:'Below',        path:'below',         kind:'text' },
     { sec:'Marker' },
@@ -396,7 +396,7 @@ export const TRACE_FIELDS = {
     { label:'Color',        path:'line.color',    kind:'color' },
     { label:'Width',        path:'line.width',    kind:'num', min:0, max:20 },
   ],
-  choroplethmapbox: [
+  choroplethmap: [
     { label:'GeoJSON URL',  path:'geojson',       kind:'text', placeholder:'https://…' },
     { label:'Feature ID key',path:'featureidkey', kind:'text', placeholder:'properties.NAME' },
     { label:'Colorscale',   path:'colorscale',    kind:'select', opts:['Viridis','Plasma','Cividis','Inferno','Magma','RdBu','Blues','Greens','Hot','Jet','Rainbow','RdYlBu','Spectral','YlOrRd','Electric','Greys'] },
@@ -410,7 +410,7 @@ export const TRACE_FIELDS = {
     { label:'Line width',   path:'marker.line.width', kind:'num', min:0, max:5 },
     { label:'Opacity',      path:'marker.opacity',kind:'num', min:0, max:1, step:0.01 },
   ],
-  densitymapbox: [
+  densitymap: [
     { label:'Radius',       path:'radius',        kind:'num', min:1, max:50 },
     { label:'Colorscale',   path:'colorscale',    kind:'select', opts:['Viridis','Plasma','Cividis','Inferno','Magma','RdBu','Blues','Greens','Hot','Jet','Rainbow','RdYlBu','Spectral','YlOrRd','Electric','Greys'] },
     { label:'Reverse scale',path:'reversescale',  kind:'bool' },

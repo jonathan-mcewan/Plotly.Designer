@@ -69,11 +69,11 @@ document.getElementById('trace-type-select').addEventListener('change', function
   state.traces = getSampleTraces(state.currentTraceType, state.currentScatterMode);
   state.chartInitialized = false;
   // Inject default layout for map types
-  if (['scattermapbox','choroplethmapbox','densitymapbox'].includes(state.currentTraceType)) {
-    if (!state.layout.mapbox) state.layout.mapbox = {};
-    if (!state.layout.mapbox.style) state.layout.mapbox.style = 'open-street-map';
-    if (!state.layout.mapbox.center) state.layout.mapbox.center = { lon: -98, lat: 38 };
-    if (!state.layout.mapbox.zoom) state.layout.mapbox.zoom = 3;
+  if (['scattermap','choroplethmap','densitymap'].includes(state.currentTraceType)) {
+    if (!state.layout.map) state.layout.map = {};
+    if (!state.layout.map.style) state.layout.map.style = 'open-street-map';
+    if (!state.layout.map.center) state.layout.map.center = { lon: -98, lat: 38 };
+    if (!state.layout.map.zoom) state.layout.map.zoom = 3;
   }
   if (['scattergeo','choropleth'].includes(state.currentTraceType)) {
     if (!state.layout.geo) state.layout.geo = {};

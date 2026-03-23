@@ -840,15 +840,15 @@
         </div>
       </div>
 
-      <!-- MAPBOX -->
+      <!-- MAP (MapLibre) -->
       <div class="section">
-        <button class="section-toggle" data-section="mapbox">
-          <span class="arrow">▶</span> Mapbox
+        <button class="section-toggle" data-section="map">
+          <span class="arrow">▶</span> Map (MapLibre)
         </button>
-        <div class="section-body" id="s-mapbox">
+        <div class="section-body" id="s-map">
           <div class="field">
-            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-style" target="_blank" rel="noopener" title="Plotly docs: mapbox.style">?</a>Style</label>
-            <select class="ctrl" data-path="mapbox.style">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-map-style" target="_blank" rel="noopener" title="Plotly docs: map.style">?</a>Style</label>
+            <select class="ctrl" data-path="map.style">
               <option value="open-street-map">open-street-map</option>
               <option value="carto-positron">carto-positron</option>
               <option value="carto-darkmatter">carto-darkmatter</option>
@@ -856,35 +856,34 @@
               <option value="stamen-toner">stamen-toner</option>
               <option value="stamen-watercolor">stamen-watercolor</option>
               <option value="white-bg">white-bg</option>
-              <option value="basic">basic (token)</option>
-              <option value="streets">streets (token)</option>
-              <option value="outdoors">outdoors (token)</option>
-              <option value="light">light (token)</option>
-              <option value="dark">dark (token)</option>
-              <option value="satellite">satellite (token)</option>
-              <option value="satellite-streets">satellite-streets (token)</option>
+              <option value="basic">basic</option>
+              <option value="streets">streets</option>
+              <option value="outdoors">outdoors</option>
+              <option value="light">light</option>
+              <option value="dark">dark</option>
+              <option value="satellite">satellite</option>
+              <option value="satellite-streets">satellite-streets</option>
             </select>
           </div>
-          <div class="field-hint">Styles without "(token)" work without a Mapbox access token.</div>
           <div class="field">
-            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-center-lon" target="_blank" rel="noopener" title="Plotly docs: mapbox.center.lon">?</a>Center lon</label>
-            <input type="number" class="ctrl" data-path="mapbox.center.lon" data-type="num" min="-180" max="180">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-map-center-lon" target="_blank" rel="noopener" title="Plotly docs: map.center.lon">?</a>Center lon</label>
+            <input type="number" class="ctrl" data-path="map.center.lon" data-type="num" min="-180" max="180">
           </div>
           <div class="field">
-            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-center-lat" target="_blank" rel="noopener" title="Plotly docs: mapbox.center.lat">?</a>Center lat</label>
-            <input type="number" class="ctrl" data-path="mapbox.center.lat" data-type="num" min="-90" max="90">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-map-center-lat" target="_blank" rel="noopener" title="Plotly docs: map.center.lat">?</a>Center lat</label>
+            <input type="number" class="ctrl" data-path="map.center.lat" data-type="num" min="-90" max="90">
           </div>
           <div class="field">
-            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-zoom" target="_blank" rel="noopener" title="Plotly docs: mapbox.zoom">?</a>Zoom</label>
-            <input type="number" class="ctrl" data-path="mapbox.zoom" data-type="num" min="0" max="20" step="0.5">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-map-zoom" target="_blank" rel="noopener" title="Plotly docs: map.zoom">?</a>Zoom</label>
+            <input type="number" class="ctrl" data-path="map.zoom" data-type="num" min="0" max="20" step="0.5">
           </div>
           <div class="field">
-            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-bearing" target="_blank" rel="noopener" title="Plotly docs: mapbox.bearing">?</a>Bearing</label>
-            <input type="number" class="ctrl" data-path="mapbox.bearing" data-type="num" min="0" max="360">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-map-bearing" target="_blank" rel="noopener" title="Plotly docs: map.bearing">?</a>Bearing</label>
+            <input type="number" class="ctrl" data-path="map.bearing" data-type="num" min="0" max="360">
           </div>
           <div class="field">
-            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-mapbox-pitch" target="_blank" rel="noopener" title="Plotly docs: mapbox.pitch">?</a>Pitch</label>
-            <input type="number" class="ctrl" data-path="mapbox.pitch" data-type="num" min="0" max="60">
+            <label><a class="doc-link" href="https://plotly.com/javascript/reference/layout/#layout-map-pitch" target="_blank" rel="noopener" title="Plotly docs: map.pitch">?</a>Pitch</label>
+            <input type="number" class="ctrl" data-path="map.pitch" data-type="num" min="0" max="60">
           </div>
         </div>
       </div>
@@ -996,9 +995,9 @@
         <optgroup label="Maps">
           <option value="scattergeo">Scatter Geo</option>
           <option value="choropleth">Choropleth</option>
-          <option value="scattermapbox">Scatter Mapbox</option>
-          <option value="choroplethmapbox">Choropleth Mapbox</option>
-          <option value="densitymapbox">Density Mapbox</option>
+          <option value="scattermap">Scatter Map</option>
+          <option value="choroplethmap">Choropleth Map</option>
+          <option value="densitymap">Density Map</option>
         </optgroup>
         <optgroup label="Other">
           <option value="indicator">Indicator</option>
@@ -1043,7 +1042,7 @@
 
 </div><!-- end app -->
 
-<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<script src="https://cdn.plot.ly/plotly-3.4.0.min.js" charset="utf-8"></script>
 <script type="module" src="js/app.js"></script>
 </body>
 </html>
