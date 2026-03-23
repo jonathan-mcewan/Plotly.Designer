@@ -68,14 +68,23 @@ document.getElementById('trace-type-select').addEventListener('change', function
   state.currentTraceType = this.value;
   state.traces = getSampleTraces(state.currentTraceType, state.currentScatterMode);
   state.chartInitialized = false;
+
+  // Clean stale subplot layouts to prevent Plotly 3.x crashes
+  const isMapType = ['scattermap','choroplethmap','densitymap'].includes(state.currentTraceType);
+  const isGeoType = ['scattergeo','choropleth'].includes(state.currentTraceType);
+  const is3dType = ['scatter3d','surface'].includes(state.currentTraceType);
+  if (!isMapType) delete state.layout.map;
+  if (!isGeoType) delete state.layout.geo;
+  if (!is3dType) delete state.layout.scene;
+
   // Inject default layout for map types
-  if (['scattermap','choroplethmap','densitymap'].includes(state.currentTraceType)) {
+  if (isMapType) {
     if (!state.layout.map) state.layout.map = {};
     if (!state.layout.map.style) state.layout.map.style = 'open-street-map';
     if (!state.layout.map.center) state.layout.map.center = { lon: -98, lat: 38 };
     if (!state.layout.map.zoom) state.layout.map.zoom = 3;
   }
-  if (['scattergeo','choropleth'].includes(state.currentTraceType)) {
+  if (isGeoType) {
     if (!state.layout.geo) state.layout.geo = {};
     if (state.layout.geo.showland === undefined) state.layout.geo.showland = true;
   }
